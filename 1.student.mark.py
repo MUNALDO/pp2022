@@ -3,22 +3,6 @@ student_info = {}
 course_with_mark = {}
 end = False
 
-
-def input_course_info(info):
-    num_of_course = input("Enter number of course : ")
-    num = int(num_of_course)
-    while num > 0:
-        id = input("Enter course ID : ")
-        if not is_exist(info, id):
-            name = input("Enter course name : ")
-            course = [name]
-            info[id] = course
-            num = num - 1
-        else:
-            print(f"This id existed.")
-    print(f"Add {num_of_course} courses success.")
-
-
 def input_student_info(info):
     num_student = input("Input number of students: ")
     num = int(num_student)
@@ -33,6 +17,20 @@ def input_student_info(info):
         else:
             print(f"This id existed.")
     print(f"Add {num_student} students success.")
+    
+def input_course_info(info):
+    num_of_course = input("Enter number of course : ")
+    num = int(num_of_course)
+    while num > 0:
+        id = input("Enter course ID : ")
+        if not is_exist(info, id):
+            name = input("Enter course name : ")
+            course = [name]
+            info[id] = course
+            num = num - 1
+        else:
+            print(f"This id existed.")
+    print(f"Add {num_of_course} courses success.")
 
 
 def list_student():
@@ -83,13 +81,13 @@ def is_exist(dictionary, id):
 
 print("Welcome To Student Management Program!")
 while not end:
-    print("-----------menu----------")
+    print("-----------Main Menu----------")
     print("[1] Add Students")
     print("[2] Add Courses")
     print("[3] Show list of students")
     print("[4] Show list of courses")
     print("[5] Add student's marks to a course")
-    print("[6] Show a course with marks")
+    print("[6] Show a course with student marks")
     print("[0] Exit")
     choice = input("Please choose an option: ")
     if choice == "1":
