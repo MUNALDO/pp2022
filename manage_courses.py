@@ -1,28 +1,55 @@
 class Course:
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
+    def __init__(self, id, name, credits):
+        self.__id = id
+        self.__name = name
+        self.__credits = credits
+
+    # ID
+    @property
+    def id(self):
+        return self.__id
+    @id.setter
+    def id(self, id):
+        self.__id = id
+
+    # Name
+    @property
+    def name(self):
+        return self.__name
+    @name.setter
+    def name(self, name):
+        self.__name = name
+
+    # CREDITS
+    @property
+    def credits(self):
+        return self.__credits
+    @credits.setter
+    def credits(self, credits):
+        self.__credits = credits
+
 
 
 class CourseInfor:
     def __init__(self):
-        self.num = 0
-        self.courses = []
+        self.__num = 0
+        self.__courses = []
 
     def num_of_student(self):
-        self.num = int(input("Enter number of courses: "))
-        return self.num
+        self.__num = int(input("Please enter number of courses: "))
+        return self.__num
 
     def add_course(self):
         for i in range(self.num_of_student()):
-            id = input("ID: ")
-            name = input("Name: ")
-            course = Course(id, name)
-            self.courses.append(course)
-        print(f"{self.num} courses has been added")
-        return self.courses
+            id = input("Please enter the Course-ID: ")
+            name = input("Please enter the Course-Name: ")
+            credits = input("Please enter the Course-Credits: ")
+            course = Course(id, name, credits)
+            self.__courses.append(course)
+        print(f"{self.__num} courses has been added")
+        return self.__courses
 
     def present_course(self):
-        print("{:3} | {:10} | {:20} ".format("No.", "ID", "Name"))
-        for i in range(len(self.courses)):
-            print("{:3} | {:10} | {:20} ".format(str(i+1), self.courses[i].id, self.courses[i].name))
+        print("{:3} | {:12} | {:22} | {:4} ".format("No.", "ID", "Name", "Credits"))
+        for i in range(len(self.__courses)):
+            print("{:3} | {:12} | {:22} | {:4} ".format(str(i+1), self.__courses[i].id, self.__courses[i].name, self.__courses[i].credits))
